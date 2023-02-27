@@ -96,7 +96,7 @@
                         <a (click)="clearSearch()" class="btn">Clear</a>
                     </div>
                     <div class="col-sm-6">
-                        <a href="javascript://" class="btn">Search</a>
+                        <a  (click)="search()" href="javascript://" class="btn">Search</a>
                     </div>
                 </div>
                 <!-- </mat-action-row> -->
@@ -121,8 +121,9 @@
             <mat-card>
                 <mat-card-content>
                     <ngx-datatable class="bootstrap" [rows]="data" [columnMode]="ColumnMode.force"
-                        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [limit]="5" [selected]="selected"
-                        [selectionType]="SelectionType.checkbox" (activate)="onActivate($event)" (select)="onSelect($event)">
+                        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [limit]="limit" [selected]="selected"
+                        [selectionType]="SelectionType.checkbox" (activate)="onActivate($event)" (select)="onSelect($event)" 
+                        (page)="paginate($event)" [count]="totalCount" [externalPaging]="true">
                         <ngx-datatable-column [width]="60" [sortable]="false" [canAutoResize]="false" [draggable]="false"
                             [resizeable]="false">
                             <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"

@@ -1,0 +1,8 @@
+{
+    "/api/v1": {
+      "target": "http://142.132.206.93:8044",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    }
+  }

@@ -5,6 +5,8 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './shared/material.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { Interceptor } from './shared/interceptor/httpInterceptor';
 
 @NgModule({
   declarations: [
@@ -15,8 +17,10 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
