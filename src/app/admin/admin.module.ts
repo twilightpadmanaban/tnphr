@@ -11,6 +11,7 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
+import { BrowserModule } from '@angular/platform-browser';
 
 
 @NgModule({

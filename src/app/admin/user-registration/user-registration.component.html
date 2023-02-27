@@ -119,32 +119,31 @@
                         class="material-icons">save_alt</span>Export</a>
             </div>
             <mat-card>
-                <mat-card-header>
-            test 
-                </mat-card-header>
-                <ngx-datatable style="width: 90%" class="material" [rows]="data" [columnMode]="ColumnMode.force" [headerHeight]="50"
-                    [footerHeight]="50" rowHeight="auto" [limit]="5" [selected]="selected" [selectionType]="SelectionType.checkbox"
-                    (activate)="onActivate($event)" (select)="onSelect($event)">
-                    <ngx-datatable-column [width]="60" [sortable]="false" [canAutoResize]="false" [draggable]="false"
-                        [resizeable]="false">
-                        <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                            let-selectFn="selectFn">
-                            <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
-                        </ng-template>
-                        <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
-                            let-onCheckboxChangeFn="onCheckboxChangeFn">
-                            <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
-                        </ng-template>
-                    </ngx-datatable-column>
-                    <ngx-datatable-column name="District"></ngx-datatable-column>
-                    <ngx-datatable-column name="Block"></ngx-datatable-column>
-                    <ngx-datatable-column name="Facility"></ngx-datatable-column>
-                    <ngx-datatable-column name="Name"></ngx-datatable-column>
-                    <ngx-datatable-column name="Mobile"></ngx-datatable-column>
-                    <ngx-datatable-column name="PHR Role"></ngx-datatable-column>
-                    <ngx-datatable-column name="Active"></ngx-datatable-column>
-                    <ngx-datatable-column name="Edit"></ngx-datatable-column>
-                </ngx-datatable>
+                <mat-card-content>
+                    <ngx-datatable class="bootstrap" [rows]="data" [columnMode]="ColumnMode.force"
+                        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [limit]="5" [selected]="selected"
+                        [selectionType]="SelectionType.checkbox" (activate)="onActivate($event)" (select)="onSelect($event)">
+                        <ngx-datatable-column [width]="60" [sortable]="false" [canAutoResize]="false" [draggable]="false"
+                            [resizeable]="false">
+                            <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
+                                let-selectFn="selectFn">
+                                <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                            </ng-template>
+                            <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
+                                let-onCheckboxChangeFn="onCheckboxChangeFn">
+                                <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
+                            </ng-template>
+                        </ngx-datatable-column>
+                        <ngx-datatable-column   name="District"></ngx-datatable-column>
+                        <ngx-datatable-column   name="Block"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="250"  name="Facility"></ngx-datatable-column>
+                        <ngx-datatable-column   name="Name"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="200"  name="Mobile"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="250"  name="PHR Role"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="100"  name="Active" [sortable]="false"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="100"  name="Edit" [sortable]="false"></ngx-datatable-column>
+                    </ngx-datatable>
+                </mat-card-content>
             </mat-card>
             <div class="pan_box pad0"> 
             </div>

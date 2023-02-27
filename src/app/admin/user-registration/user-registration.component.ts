@@ -56,6 +56,46 @@ export class UserRegistrationComponent {
         phrRole: 'STATE_ADMIN',
         Active: '',
         Edit: ''
+      },
+      {
+        district: 'None',
+        block: 'None',
+        facility: 'DPH State Office',
+        name: 'Chitra DPH',
+        mobile: '9080738886',
+        phrRole: 'STATE_ADMIN',
+        Active: '',
+        Edit: ''
+      },
+      {
+        district: 'None',
+        block: 'None',
+        facility: 'DPH State Office',
+        name: 'Chitra DPH',
+        mobile: '9080738886',
+        phrRole: 'STATE_ADMIN',
+        Active: '',
+        Edit: ''
+      },
+      {
+        district: 'None',
+        block: 'None',
+        facility: 'DPH State Office',
+        name: 'Chitra DPH',
+        mobile: '9080738886',
+        phrRole: 'STATE_ADMIN',
+        Active: '',
+        Edit: ''
+      },
+      {
+        district: 'None',
+        block: 'None',
+        facility: 'DPH State Office',
+        name: 'Chitra DPH',
+        mobile: '9080738886',
+        phrRole: 'STATE_ADMIN',
+        Active: '',
+        Edit: ''
       }
     ]
   }

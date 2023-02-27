@@ -27,3 +27,10 @@ mat-form-field {
 .mat-form-field-appearance-outline.mat-focused .mat-form-field-outline-thick {
     color: black;
   }
+
+::ng-deep {
+    datatable-header-cell {
+    font-weight: 900;
+    font-size: 14px;
+    }
+}
