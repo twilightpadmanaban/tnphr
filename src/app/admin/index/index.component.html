@@ -22,7 +22,36 @@
       </div>
   </div>
 </div>
-<router-outlet></router-outlet>
+<div class="body">
+    <div class="left_pan">
+        <div class="left_menus">
+            <ul>
+                <li><a href="index.html"><span class="material-icons">dashboard</span><span>Dashboard</span></a></li>
+                <li class="active"><a href="users_mgmt.html"><span class="material-icons">people</span><span>Users
+                            Mgmt.</span></a></li>
+                <li><a href="#"><span class="material-icons">store</span><span>PDS Shop Mgmt.</span></a></li>
+                <li><a href="#"><span class="material-icons">place</span><span>Streets Mgmt.</span></a></li>
+                <li><a href="#"><span class="material-icons">location_city</span><span>Facility Mgmt.</span></a></li>
+                <li><a href="ftp_mgmt.html"><span class="material-icons">event</span><span>FTP Mgmt.</span></a></li>
+                <li class="drop">
+                    <a href="javascript://"><span class="material-icons">category</span><span>Hierarchy Mgmt.</span></a>
+                    <ul class="sub_menus">
+                        <li><a href="#"><span class="material-icons">density_small</span><span>Districts
+                                    Mgmt.</span></a></li>
+                        <li><a href="#"><span class="material-icons">add_box</span><span>HUD Mgmt.</span></a></li>
+                        <li><a href="#"><span class="material-icons">view_module</span><span>Blocks Mgmt.</span></a>
+                        </li>
+                        <li><a href="#"><span class="material-icons">hive</span><span>Villages Mgmt.</span></a></li>
+                        <li><a href="#"><span class="material-icons">home</span><span>Habitation Mgmt.</span></a></li>
+                        <li><a href="#"><span class="material-icons">3p</span><span>Taluk Mgmt.</span></a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <router-outlet></router-outlet>
+</div>
+
 
 
 

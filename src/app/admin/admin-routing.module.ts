@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { IndexComponent } from './index/index.component';
+import { UpsertUserRegistrationComponent } from './upsert-user-registration/upsert-user-registration.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
 
 const routes: Routes = [
@@ -21,6 +22,10 @@ const routes: Routes = [
       {
         path: 'registration',
         component: UserRegistrationComponent
+      },
+      {
+        path: 'createUser',
+        component: UpsertUserRegistrationComponent
       }
     ]
   }

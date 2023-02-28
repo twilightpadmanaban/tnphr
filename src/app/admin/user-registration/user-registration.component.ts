@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { AdminServiceService } from 'src/app/shared/service/admin-service.service';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-registration',
@@ -22,7 +23,8 @@ export class UserRegistrationComponent {
   totalCount = 5;
   faEdit: any;
 
-  constructor(private formBuilder: FormBuilder, private as: AdminServiceService ) {
+  constructor( private formBuilder: FormBuilder, private as: AdminServiceService,
+               private router: Router) {
   }
 
   ngOnInit() {
@@ -370,6 +372,6 @@ export class UserRegistrationComponent {
   }
 
   createUser() {
-    //  this.router.navigate();
+     this.router.navigate(['/admin/createUser']);
   }
 }
