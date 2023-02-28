@@ -12,13 +12,16 @@ import { UserRegistrationComponent } from './user-registration/user-registration
 import {MatExpansionModule} from '@angular/material/expansion';
 import {MatCardModule} from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { UpsertUserRegistrationComponent } from './upsert-user-registration/upsert-user-registration.component';
 
 
 @NgModule({
   declarations: [
     IndexComponent,
     DashboardComponent,
-    UserRegistrationComponent
+    UserRegistrationComponent,
+    UpsertUserRegistrationComponent
   ],
   imports: [
     CommonModule,
@@ -29,7 +32,8 @@ import { BrowserModule } from '@angular/platform-browser';
     ReactiveFormsModule,
     NgxDatatableModule,
     MatExpansionModule,
-    MatCardModule
+    MatCardModule,
+    FontAwesomeModule
   ]
 })
 export class AdminModule { }

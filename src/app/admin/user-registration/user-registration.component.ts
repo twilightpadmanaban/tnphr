@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { AdminServiceService } from 'src/app/shared/service/admin-service.service';
+import { faPencil } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-user-registration',
@@ -19,264 +20,266 @@ export class UserRegistrationComponent {
   panelOpenState = true;
   offset = 0;
   totalCount = 5;
+  faEdit: any;
 
   constructor(private formBuilder: FormBuilder, private as: AdminServiceService ) {
   }
 
   ngOnInit() {
     this.createForm();
-    this.createDummyData();
+    // this.createDummyData();
     this.search();
+    this.faEdit = faPencil;
     // this.as.getUsers().subscribe((res) => {
 
     // })
   }
 
-  createDummyData() {
-    this.data = [
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'Chepauk Dispensary, Chennai',
-        name: 'Sumathy Dr',
-        mobile: '9444667628',
-        phrRole: 'WEB_DISTRICT_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DMS State Office',
-        name: 'Chitra DK',
-        mobile: '9342997747',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      }, 
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'Chepauk Dispensary, Chennai',
-        name: 'Sumathy Dr',
-        mobile: '9444667628',
-        phrRole: 'WEB_DISTRICT_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DMS State Office',
-        name: 'Chitra DK',
-        mobile: '9342997747',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      }, 
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'Chepauk Dispensary, Chennai',
-        name: 'Sumathy Dr',
-        mobile: '9444667628',
-        phrRole: 'WEB_DISTRICT_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DMS State Office',
-        name: 'Chitra DK',
-        mobile: '9342997747',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      },
-      {
-        district: 'None',
-        block: 'None',
-        facility: 'DPH State Office',
-        name: 'Chitra DPH',
-        mobile: '9080738886',
-        phrRole: 'STATE_ADMIN',
-        Active: '',
-        Edit: ''
-      }
+  // createDummyData() {
+  //   this.data = [
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'Chepauk Dispensary, Chennai',
+  //       name: 'Sumathy Dr',
+  //       mobile: '9444667628',
+  //       phrRole: 'WEB_DISTRICT_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DMS State Office',
+  //       name: 'Chitra DK',
+  //       mobile: '9342997747',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     }, 
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'Chepauk Dispensary, Chennai',
+  //       name: 'Sumathy Dr',
+  //       mobile: '9444667628',
+  //       phrRole: 'WEB_DISTRICT_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DMS State Office',
+  //       name: 'Chitra DK',
+  //       mobile: '9342997747',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     }, 
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'Chepauk Dispensary, Chennai',
+  //       name: 'Sumathy Dr',
+  //       mobile: '9444667628',
+  //       phrRole: 'WEB_DISTRICT_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DMS State Office',
+  //       name: 'Chitra DK',
+  //       mobile: '9342997747',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     },
+  //     {
+  //       district: 'None',
+  //       block: 'None',
+  //       facility: 'DPH State Office',
+  //       name: 'Chitra DPH',
+  //       mobile: '9080738886',
+  //       phrRole: 'STATE_ADMIN',
+  //       Active: '',
+  //       Edit: ''
+  //     }
 
-    ]
-  }
+  //   ]
+  // }
 
   createForm() {
     this.userForm = this.formBuilder.group({
@@ -298,6 +301,11 @@ export class UserRegistrationComponent {
 
   onSelect(event: any) {
   }
+
+  edit(value: any) {
+     console.log('the value is given as:', value);
+  }
+
   search() {
     if (this.userForm.invalid) {
       return;
@@ -359,5 +367,9 @@ export class UserRegistrationComponent {
     this.limit = e.limit;
     this.offset = e.offset;
     this.search();
+  }
+
+  createUser() {
+    //  this.router.navigate();
   }
 }

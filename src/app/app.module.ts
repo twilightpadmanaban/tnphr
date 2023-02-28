@@ -7,6 +7,7 @@ import { MaterialModule } from './shared/material.module';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Interceptor } from './shared/interceptor/httpInterceptor';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { Interceptor } from './shared/interceptor/httpInterceptor';
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
+    FontAwesomeModule,
   ],
   providers: [    { provide: HTTP_INTERCEPTORS, useClass: Interceptor, multi: true }  
   ],

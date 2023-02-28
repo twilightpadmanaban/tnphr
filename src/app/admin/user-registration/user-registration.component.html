@@ -30,7 +30,7 @@
             <div class="hed_sty1">
                 <span class="material-icons">people</span>Users Mgmt. (Annexure 10)
                 <div class="spacer"></div>
-                <a href="javascript://" class="btn">New User</a>
+                <a (click)="createUser()" class="btn">New User</a>
             </div>
             <mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true"
                 (closed)="panelOpenState = false">
@@ -96,7 +96,7 @@
                         <a (click)="clearSearch()" class="btn">Clear</a>
                     </div>
                     <div class="col-sm-6">
-                        <a  (click)="search()" href="javascript://" class="btn">Search</a>
+                        <a (click)="search()" href="javascript://" class="btn">Search</a>
                     </div>
                 </div>
                 <!-- </mat-action-row> -->
@@ -120,33 +120,50 @@
             </div>
             <mat-card>
                 <mat-card-content>
-                    <ngx-datatable class="bootstrap" [rows]="data" [columnMode]="ColumnMode.force"
-                        [headerHeight]="50" [footerHeight]="50" [rowHeight]="50" [limit]="limit" [selected]="selected"
-                        [selectionType]="SelectionType.checkbox" (activate)="onActivate($event)" (select)="onSelect($event)" 
-                        (page)="paginate($event)" [count]="totalCount" [externalPaging]="true">
-                        <ngx-datatable-column [width]="60" [sortable]="false" [canAutoResize]="false" [draggable]="false"
-                            [resizeable]="false">
-                            <ng-template ngx-datatable-header-template let-value="value" let-allRowsSelected="allRowsSelected"
-                                let-selectFn="selectFn">
-                                <input type="checkbox" [checked]="allRowsSelected" (change)="selectFn(!allRowsSelected)" />
+                    <ngx-datatable class="bootstrap" [rows]="data" [columnMode]="ColumnMode.force" [headerHeight]="50"
+                        [footerHeight]="50" [rowHeight]="50" [limit]="limit" [selected]="selected"
+                        [selectionType]="SelectionType.checkbox" (activate)="onActivate($event)"
+                        (select)="onSelect($event)" (page)="paginate($event)" [count]="totalCount"
+                        [externalPaging]="true">
+                        <ngx-datatable-column [width]="60" [sortable]="false" [canAutoResize]="false"
+                            [draggable]="false" [resizeable]="false">
+                            <ng-template ngx-datatable-header-template let-value="value"
+                                let-allRowsSelected="allRowsSelected" let-selectFn="selectFn">
+                                <input type="checkbox" [checked]="allRowsSelected"
+                                    (change)="selectFn(!allRowsSelected)" />
                             </ng-template>
                             <ng-template ngx-datatable-cell-template let-value="value" let-isSelected="isSelected"
                                 let-onCheckboxChangeFn="onCheckboxChangeFn">
                                 <input type="checkbox" [checked]="isSelected" (change)="onCheckboxChangeFn($event)" />
                             </ng-template>
                         </ngx-datatable-column>
-                        <ngx-datatable-column   name="District"></ngx-datatable-column>
-                        <ngx-datatable-column   name="Block"></ngx-datatable-column>
-                        <ngx-datatable-column [width]="250"  name="Facility"></ngx-datatable-column>
-                        <ngx-datatable-column   name="Name"></ngx-datatable-column>
-                        <ngx-datatable-column [width]="200"  name="Mobile"></ngx-datatable-column>
-                        <ngx-datatable-column [width]="250"  name="PHR Role"></ngx-datatable-column>
-                        <ngx-datatable-column [width]="100"  name="Active" [sortable]="false"></ngx-datatable-column>
-                        <ngx-datatable-column [width]="100"  name="Edit" [sortable]="false"></ngx-datatable-column>
+                        <ngx-datatable-column name="District"></ngx-datatable-column>
+                        <ngx-datatable-column name="Block"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="250" name="Facility"></ngx-datatable-column>
+                        <ngx-datatable-column name="Name"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="200" name="Mobile"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="250" name="PHR Role"></ngx-datatable-column>
+                        <ngx-datatable-column [width]="100" name="Active" [sortable]="false">
+                            <ng-template ngx-datatable-cell-template let-value="value">
+                                <i *ngIf="value" class="fas fa-check mr-3 ml-3" data-toggle="tooltip"
+                                    data-placement="top" title="Active" aria-hidden="true"></i>
+                                <i *ngIf="!value" class="fas fa-xmark mr-3 ml-3" data-toggle="tooltip"
+                                    data-placement="top" title="Inactive" aria-hidden="true"></i>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column [width]="100" name="Edit" [sortable]="false">
+                            <ng-template ngx-datatable-cell-template let-value="value">
+                                <i class="fas fa-pen cursor-pointer mr-3 ml-3" data-toggle="tooltip"
+                                    data-placement="top" title="Edit" (click)="edit(value)" aria-hidden="true"></i>
+                                <!-- <fa-icon [icon]="faEdit" (click)="edit(value)"></fa-icon> -->
+                            </ng-template>
+                        </ngx-datatable-column>
+
                     </ngx-datatable>
                 </mat-card-content>
             </mat-card>
-            <div class="pan_box pad0"> 
+            <div class="pan_box pad0">
             </div>
         </div>
     </div>
