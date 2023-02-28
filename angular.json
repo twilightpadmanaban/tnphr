@@ -33,6 +33,9 @@
               "includePaths": ["node_modules"]
             },
             "styles": [
+              "./node_modules/@swimlane/ngx-datatable/index.css",
+              "./node_modules/@swimlane/ngx-datatable/themes/material.css",
+              "./node_modules/@swimlane/ngx-datatable/assets/icons.css",
               "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
