@@ -14,6 +14,8 @@ import {MatCardModule} from '@angular/material/card';
 import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { UpsertUserRegistrationComponent } from './upsert-user-registration/upsert-user-registration.component';
+import {MatStepperModule} from '@angular/material/stepper';
+import {MatButtonModule} from '@angular/material/button';
 
 
 @NgModule({
@@ -33,7 +35,9 @@ import { UpsertUserRegistrationComponent } from './upsert-user-registration/upse
     NgxDatatableModule,
     MatExpansionModule,
     MatCardModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    MatStepperModule,
+    MatButtonModule
   ]
 })
 export class AdminModule { }
