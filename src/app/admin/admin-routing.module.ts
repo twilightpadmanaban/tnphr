@@ -15,18 +15,19 @@ const routes: Routes = [
         component: DashboardComponent
       },
       {
-        path: '',
-        pathMatch: 'full',
-        redirectTo: 'registration'
-      },
-      {
-        path: 'registration',
+        path: 'user-management',
         component: UserRegistrationComponent
       },
       {
         path: 'createUser',
         component: UpsertUserRegistrationComponent
       }
+      ,
+      {
+        path: '',
+        pathMatch: 'full',
+        redirectTo: 'dashboard'
+      },
     ]
   }
 ];
