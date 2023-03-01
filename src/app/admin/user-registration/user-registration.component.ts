@@ -4,6 +4,7 @@ import { ColumnMode, SelectionType } from '@swimlane/ngx-datatable';
 import { AdminServiceService } from 'src/app/shared/service/admin-service.service';
 import { faPencil } from '@fortawesome/free-solid-svg-icons';
 import { Router } from '@angular/router';
+import { DataService } from 'src/app/shared/service/data.service';
 
 @Component({
   selector: 'app-user-registration',
@@ -30,269 +31,18 @@ export class UserRegistrationComponent {
   isBlockSelected = false;
   finalBlockList: any[] = [];
 
-  constructor( private formBuilder: FormBuilder, private as: AdminServiceService,
-               private router: Router) {
+  constructor( private formBuilder: FormBuilder, private adminService: AdminServiceService,
+               private router: Router, private dataService: DataService) {
   }
 
   ngOnInit() {
     this.createForm();
-    // this.createDummyData();
     this.search();
-    this.getDistricts();
-    this.getBlocks();
-    this.getRoles();
-    // this.getFacility();
     this.faEdit = faPencil;
-    // this.as.getUsers().subscribe((res) => {
-
-    // })
+    this.districts = this.dataService.districts;
+    this.blocks = this.dataService.blocks;
+    this.roles = this.dataService.roles;
   }
-
-  // createDummyData() {
-  //   this.data = [
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'Chepauk Dispensary, Chennai',
-  //       name: 'Sumathy Dr',
-  //       mobile: '9444667628',
-  //       phrRole: 'WEB_DISTRICT_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DMS State Office',
-  //       name: 'Chitra DK',
-  //       mobile: '9342997747',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     }, 
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'Chepauk Dispensary, Chennai',
-  //       name: 'Sumathy Dr',
-  //       mobile: '9444667628',
-  //       phrRole: 'WEB_DISTRICT_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DMS State Office',
-  //       name: 'Chitra DK',
-  //       mobile: '9342997747',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     }, 
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'Chepauk Dispensary, Chennai',
-  //       name: 'Sumathy Dr',
-  //       mobile: '9444667628',
-  //       phrRole: 'WEB_DISTRICT_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DMS State Office',
-  //       name: 'Chitra DK',
-  //       mobile: '9342997747',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     },
-  //     {
-  //       district: 'None',
-  //       block: 'None',
-  //       facility: 'DPH State Office',
-  //       name: 'Chitra DPH',
-  //       mobile: '9080738886',
-  //       phrRole: 'STATE_ADMIN',
-  //       Active: '',
-  //       Edit: ''
-  //     }
-
-  //   ]
-  // }
 
   createForm() {
     this.userForm = this.formBuilder.group({
@@ -369,7 +119,7 @@ export class UserRegistrationComponent {
     //     "OFFSET": 0
     // }
     // this.userForm.reset();
-    this.as.getUsers(payload).subscribe((data: any) => {
+    this.adminService.getUsers(payload).subscribe((data: any) => {
       console.log(data);
       // this.data = data.data;
       this.totalCount = data['meta-data'].total_records_count;
@@ -383,37 +133,6 @@ export class UserRegistrationComponent {
         return item;
       });
     }, error => {
-    });
-  }
-  getDistricts() {
-    const payload = {
-      "USER_ID": "94af8940-9562-4ce7-865d-457e2881ff33",
-      "USER_FACILITY_ID": "a32fbc4f-8b08-4d56-b4e8-12c0be8db625"
-    }
-    this.as.getDistricts(payload).subscribe((data: any) => {
-    this.districts = data.data;
-    // this.districts = data.data.map((item: any) => {
-    //   item.name = `${item.district_name}`.trim();
-    //   return item;
-    // });
-    console.log('Districts !!!!!', this.districts);
-    }, error => {
-
-    });
-  }
-  getBlocks() {
-    const payload = {
-      "USER_ID": "94af8940-9562-4ce7-865d-457e2881ff33",
-      "USER_FACILITY_ID": "a32fbc4f-8b08-4d56-b4e8-12c0be8db625"
-    }
-    this.as.getBlocks(payload).subscribe((data: any) => {
-    this.blocks = data.data;
-    // this.blocks = data.data.map((item: any) => {
-    //   item.name = `${item.block_name}`.trim();
-    //   return item;
-    // });
-    }, error => {
-
     });
   }
   finalBlocks() {
@@ -442,26 +161,11 @@ export class UserRegistrationComponent {
     //         "BLOCK_ID": "35fddabc-8892-4bf3-b5d8-14537096d378"
     //     }
     // }
-    this.as.getFacility(payload).subscribe((data: any) => {
+    this.adminService.getFacility(payload).subscribe((data: any) => {
     this.facilities = data.data;
     (this.userForm.controls as any).facility.enable()
     // this.facilities = data.data.map((item: any) => {
     //   item.name = `${item.block_name}`.trim();
-    //   return item;
-    // });
-    }, error => {
-
-    });
-  }
-  getRoles() {
-    const payload = {
-      "USER_ID": "94af8940-9562-4ce7-865d-457e2881ff33",
-      "USER_FACILITY_ID": "a32fbc4f-8b08-4d56-b4e8-12c0be8db625"
-    }
-    this.as.getRole(payload).subscribe((data: any) => {
-    this.roles = data.data;
-    // this.roles = data.data.map((item: any) => {
-    //   item.name = `${item.role_name}`.trim();
     //   return item;
     // });
     }, error => {

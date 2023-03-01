@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { AdminServiceService } from 'src/app/shared/service/admin-service.service';
+import { DataService } from 'src/app/shared/service/data.service';
 
 @Component({
   selector: 'app-index',
@@ -6,4 +8,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./index.component.scss']
 })
 export class IndexComponent {
+
+  constructor( private adminService: AdminServiceService,
+               private dataService: DataService) {
+
+  }
+
+  ngOnInit() {
+  }
 }
