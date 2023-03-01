@@ -1,6 +1,30 @@
 {
-    "/api/v1": {
+    "/api/v1/admin_api_get_district_master": {
+      "target": "http://142.132.206.93:8019",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/api/v1/admin_api_get_block_master": {
+      "target": "http://142.132.206.93:8012",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/api/v1/admin_api_get_user_list": {
       "target": "http://142.132.206.93:8044",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/api/v1/admin_api_get_facility_master": {
+      "target": "http://142.132.206.93:8023",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/api/v1/admin_api_get_role_master": {
+      "target": "http://142.132.206.93:8033",
       "secure": false,
       "changeOrigin": true,
       "logLevel": "debug"

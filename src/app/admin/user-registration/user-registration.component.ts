@@ -22,6 +22,13 @@ export class UserRegistrationComponent {
   offset = 0;
   totalCount = 5;
   faEdit: any;
+  districts: any[] = [];
+  blocks: any[] = [];
+  facilities:  any[] = [];
+  roles: any[] = [];
+  isDistrictSelected = false;
+  isBlockSelected = false;
+  finalBlockList: any[] = [];
 
   constructor( private formBuilder: FormBuilder, private as: AdminServiceService,
                private router: Router) {
@@ -31,6 +38,10 @@ export class UserRegistrationComponent {
     this.createForm();
     // this.createDummyData();
     this.search();
+    this.getDistricts();
+    this.getBlocks();
+    this.getRoles();
+    // this.getFacility();
     this.faEdit = faPencil;
     // this.as.getUsers().subscribe((res) => {
 
@@ -293,8 +304,23 @@ export class UserRegistrationComponent {
       number: [''],
       role: ['']
     });
+    (this.userForm.controls as any).facility.disable()
   }
+  selectChange(type: any) {
+    if (type === 'district') {
+      this.finalBlocks();
+      this.facilities = [];
+      this.isDistrictSelected = true;
+    } else if (type === 'block') {
+      this.facilities = [];
+      this.isBlockSelected = true;
+    }
+    if ( this.isBlockSelected && this.isDistrictSelected) {
+      // (this.userForm.controls as any).facility.enable()
+          this.getFacility();
 
+    }
+  }
   ngAfterViewInit() {
   }
 
@@ -342,7 +368,6 @@ export class UserRegistrationComponent {
     //     "LIMIT": 10,
     //     "OFFSET": 0
     // }
-    console.log('Payload', payload);
     // this.userForm.reset();
     this.as.getUsers(payload).subscribe((data: any) => {
       console.log(data);
@@ -357,8 +382,90 @@ export class UserRegistrationComponent {
         item.phrRole = `${item.phr_role}`.trim();
         return item;
       });
-      console.log('totalCount', this.totalCount);
     }, error => {
+    });
+  }
+  getDistricts() {
+    const payload = {
+      "USER_ID": "94af8940-9562-4ce7-865d-457e2881ff33",
+      "USER_FACILITY_ID": "a32fbc4f-8b08-4d56-b4e8-12c0be8db625"
+    }
+    this.as.getDistricts(payload).subscribe((data: any) => {
+    this.districts = data.data;
+    // this.districts = data.data.map((item: any) => {
+    //   item.name = `${item.district_name}`.trim();
+    //   return item;
+    // });
+    console.log('Districts !!!!!', this.districts);
+    }, error => {
+
+    });
+  }
+  getBlocks() {
+    const payload = {
+      "USER_ID": "94af8940-9562-4ce7-865d-457e2881ff33",
+      "USER_FACILITY_ID": "a32fbc4f-8b08-4d56-b4e8-12c0be8db625"
+    }
+    this.as.getBlocks(payload).subscribe((data: any) => {
+    this.blocks = data.data;
+    // this.blocks = data.data.map((item: any) => {
+    //   item.name = `${item.block_name}`.trim();
+    //   return item;
+    // });
+    }, error => {
+
+    });
+  }
+  finalBlocks() {
+    console.log('final block called', this.userForm.value.district);
+    this.finalBlockList = this.blocks.filter(obj => obj.district_id.includes(this.userForm.value.district));
+    console.log('final blocks', this.finalBlockList);
+  }
+  getFacility() {
+    const payload = {
+      "USER_ID": "94af8940-9562-4ce7-865d-457e2881ff33",
+      "USER_FACILITY_ID": "a32fbc4f-8b08-4d56-b4e8-12c0be8db625",
+      "GOVT_DEPARTMENT": "",
+      "FILTERS": {
+          "DIRECTORATE_ID": "",
+          "DISTRICT_ID": this.userForm.value.district ? this.userForm.value.district : '',
+          "BLOCK_ID": this.userForm.value.block ? this.userForm.value.block : '',
+      }
+    }
+    // const payload = {
+    //   "USER_ID": "94af8940-9562-4ce7-865d-457e2881ff33",
+    //   "USER_FACILITY_ID": "a32fbc4f-8b08-4d56-b4e8-12c0be8db625",
+    //   "GOVT_DEPARTMENT": "",
+    //     "FILTERS": {
+    //         "DIRECTORATE_ID": "",
+    //         "DISTRICT_ID": "a93817d9-cf39-4cea-b0f0-9643ab25e8f9",
+    //         "BLOCK_ID": "35fddabc-8892-4bf3-b5d8-14537096d378"
+    //     }
+    // }
+    this.as.getFacility(payload).subscribe((data: any) => {
+    this.facilities = data.data;
+    (this.userForm.controls as any).facility.enable()
+    // this.facilities = data.data.map((item: any) => {
+    //   item.name = `${item.block_name}`.trim();
+    //   return item;
+    // });
+    }, error => {
+
+    });
+  }
+  getRoles() {
+    const payload = {
+      "USER_ID": "94af8940-9562-4ce7-865d-457e2881ff33",
+      "USER_FACILITY_ID": "a32fbc4f-8b08-4d56-b4e8-12c0be8db625"
+    }
+    this.as.getRole(payload).subscribe((data: any) => {
+    this.roles = data.data;
+    // this.roles = data.data.map((item: any) => {
+    //   item.name = `${item.role_name}`.trim();
+    //   return item;
+    // });
+    }, error => {
+
     });
   }
   clearSearch() {

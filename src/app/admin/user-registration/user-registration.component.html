@@ -16,19 +16,34 @@
             <div class="col-sm-4">
                 <mat-form-field appearance="outline" class="border-red" style="width:100%">
                     <mat-label>District</mat-label>
-                    <input matInput formControlName="district" placeholder="Select District">
+                    <!-- <input matInput formControlName="district" placeholder="Select District"> -->
+                            <mat-select formControlName="district" (selectionChange)="selectChange('district')" >
+                                <mat-option *ngFor="let item of districts" [value]="item.district_id">
+                                    {{item.district_name}}
+                                </mat-option>
+                            </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <mat-form-field appearance="outline" class="border-red" style="width:100%">
                     <mat-label>Block</mat-label>
-                    <input matInput formControlName="block" placeholder="Select Block">
+                    <!-- <input matInput formControlName="block" placeholder="Select Block"> -->
+                            <mat-select formControlName="block" (selectionChange)="selectChange('block')">
+                                <mat-option *ngFor="let item of finalBlockList" [value]="item.block_id">
+                                    {{item.block_name}}
+                                </mat-option>
+                            </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
                 <mat-form-field appearance="outline" class="border-red" style="width:100%">
                     <mat-label>Facility</mat-label>
-                    <input matInput formControlName="facility" placeholder="Select Facility">
+                    <!-- <input matInput formControlName="facility" placeholder="Select Facility"> -->
+                            <mat-select formControlName="facility">
+                                <mat-option *ngFor="let item of facilities" [value]="item.facility_id">
+                                    {{item.facility_name}}
+                                </mat-option>
+                            </mat-select>
                 </mat-form-field>
             </div>
             <div class="col-sm-4">
@@ -52,7 +67,12 @@
             <div class="col-sm-4">
                 <mat-form-field appearance="outline" class="border-red" style="width:100%">
                     <mat-label>Role</mat-label>
-                    <input matInput formControlName="role">
+                    <!-- <input matInput formControlName="role"> -->
+                            <mat-select formControlName="role">
+                                <mat-option *ngFor="let item of roles" [value]="item.role_id">
+                                    {{item.role_name}}
+                                </mat-option>
+                            </mat-select>
                 </mat-form-field>
             </div>
         </form>
