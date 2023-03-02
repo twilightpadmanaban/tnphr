@@ -28,5 +28,29 @@
       "secure": false,
       "changeOrigin": true,
       "logLevel": "debug"
+    },
+    "/api/v1/admin_api_dashboard_user_aggregate": {
+      "target": "http://142.132.206.93:8010",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/api/v1/admin_api_dashboard_facility_aggregate": {
+      "target": "http://142.132.206.93:8006",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/api/v1/admin_api_dashboard_street_aggregates": {
+      "target": "http://142.132.206.93:8009",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
+    },
+    "/api/v1/admin_api_dashboard_shop_aggregate": {
+      "target": "http://142.132.206.93:8008",
+      "secure": false,
+      "changeOrigin": true,
+      "logLevel": "debug"
     }
 }

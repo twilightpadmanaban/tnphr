@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DataResolver } from '../shared/resolvers/data.resolver';
 import { DashboardComponent } from './dashboard/dashboard.component';
+import { FtpManagementComponent } from './ftp-management/ftp-management.component';
 import { IndexComponent } from './index/index.component';
 import { UpsertUserRegistrationComponent } from './upsert-user-registration/upsert-user-registration.component';
 import { UserRegistrationComponent } from './user-registration/user-registration.component';
@@ -23,6 +24,10 @@ const routes: Routes = [
       {
         path: 'createUser',
         component: UpsertUserRegistrationComponent
+      },
+      {
+        path: 'ftpManagement',
+        component: FtpManagementComponent
       }
       ,
       {

@@ -25,6 +25,19 @@ export class AdminServiceService {
   getRole(payload: any) {
     return this.http.post('admin_api_get_role_master', payload);
   }
+  getDashboardUsers(payload: any) {
+    return this.http.post('admin_api_dashboard_user_aggregate', payload);
+  }
+  getDashboardFacility(payload: any) {
+    return this.http.post('admin_api_dashboard_facility_aggregate', payload);
+  }
+  getDashboardStreet(payload: any) {
+    return this.http.post('admin_api_dashboard_street_aggregates', payload);
+  }
+  getDashboardShop(payload: any) {
+    return this.http.post('admin_api_dashboard_shop_aggregate', payload);
+  }
+
 
   requestDataFromMultipleSources(payload: any): Observable<any> {
     let districtListAPI = this.http.post('admin_api_get_district_master', payload);

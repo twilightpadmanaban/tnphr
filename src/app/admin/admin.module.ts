@@ -19,6 +19,7 @@ import {MatButtonModule} from '@angular/material/button';
 import {MatTabsModule} from '@angular/material/tabs';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FtpManagementComponent } from './ftp-management/ftp-management.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     IndexComponent,
     DashboardComponent,
     UserRegistrationComponent,
-    UpsertUserRegistrationComponent
+    UpsertUserRegistrationComponent,
+    FtpManagementComponent
   ],
   imports: [
     CommonModule,

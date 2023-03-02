@@ -45,16 +45,16 @@
             <ng-template matTabContent>
                 <div class="col-12 row">
                     <div class="col-6">
-                        <table mat-table [dataSource]="dataSources" class="mat-elevation-z8">
+                        <table mat-table [dataSource]="users" class="mat-elevation-z8">
 
                             <ng-container matColumnDef="name">
-                                <th mat-header-cell *matHeaderCellDef> Role </th>
-                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                              <th mat-header-cell *matHeaderCellDef> Role </th>
+                              <td mat-cell *matCellDef="let element"> {{element.facility_type_name}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="weight">
-                                <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                              <th mat-header-cell *matHeaderCellDef> Total </th>
+                              <td mat-cell *matCellDef="let element"> {{element.count}} </td>
                             </ng-container>
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -62,16 +62,16 @@
                         </table>
                     </div>
                     <div class="col-6">
-                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+                        <table mat-table [dataSource]="users" class="mat-elevation-z8">
 
                             <ng-container matColumnDef="name">
-                                <th mat-header-cell *matHeaderCellDef> PHR Role </th>
-                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                              <th mat-header-cell *matHeaderCellDef> PHR Role </th>
+                              <td mat-cell *matCellDef="let element"> {{element.facility_type_name}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="weight">
-                                <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                              <th mat-header-cell *matHeaderCellDef> Total </th>
+                              <td mat-cell *matCellDef="let element"> {{element.count}} </td>
                             </ng-container>
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumn"></tr>
@@ -85,17 +85,17 @@
             <ng-template matTabContent>
                 <p></p>
                 <div class="col-12 row">
-                    <div class="col-4 mat-elevation-z8">
-                        <table mat-table [dataSource]="dataSource" class="">
+                    <div class="col-4">
+                        <table mat-table [dataSource]="facilities" class="mat-elevation-z8">
 
                             <ng-container matColumnDef="name">
-                                <th mat-header-cell *matHeaderCellDef> Role </th>
-                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                              <th mat-header-cell *matHeaderCellDef> Role </th>
+                              <td mat-cell *matCellDef="let element"> {{element.facility_type_name}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="weight">
-                                <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                              <th mat-header-cell *matHeaderCellDef> Total </th>
+                              <td mat-cell *matCellDef="let element"> {{element.count}} </td>
                             </ng-container>
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -110,7 +110,7 @@
                                 <h4> HSC Mapped to Parent Facility</h4>
                             </mat-card-header>
                             <mat-card-content class="d-flex justify-content-center pt-2">
-                                <h1 style="font-size: 40px;"> 39 </h1>
+                                <h1 style="font-size: 40px;"> {{facilitiesCountOfMappedHSC}} </h1>
                             </mat-card-content>
                         </mat-card>
                     </div>
@@ -120,7 +120,7 @@
                                 <h4> HSC Not Mapped to Parent Facility</h4>
                             </mat-card-header>
                             <mat-card-content class="d-flex justify-content-center pt-2">
-                                <h1 style="font-size: 40px;"> 0 </h1>
+                                <h1 style="font-size: 40px;"> {{facilitiesCountOfUnMappedHSC}} </h1>
                             </mat-card-content>
                         </mat-card>
                     </div>
@@ -135,7 +135,7 @@
                             <h4> Streets Mapped to HSC</h4>
                         </mat-card-header>
                         <mat-card-content class="d-flex justify-content-center pt-2">
-                            <h1 style="font-size: 40px;"> 317750 </h1>
+                            <h1 style="font-size: 40px;"> {{streetCountOfMappedHSC}}</h1>
                         </mat-card-content>
                     </mat-card>
                 </div>
@@ -145,7 +145,7 @@
                             <h4> Streets Not Mapped To HSC</h4>
                         </mat-card-header>
                         <mat-card-content class="d-flex justify-content-center pt-2">
-                            <h1 style="font-size: 40px;"> 0 </h1>
+                            <h1 style="font-size: 40px;"> {{streetCountOfUnMappedHSC}} </h1>
                         </mat-card-content>
                     </mat-card>
                 </div>
@@ -157,7 +157,7 @@
                             <h4> Streets Mapped to Revenue Village</h4>
                         </mat-card-header>
                         <mat-card-content class="d-flex justify-content-center pt-2">
-                            <h1 style="font-size: 40px;"> 112370 </h1>
+                            <h1 style="font-size: 40px;"> {{streetCountOfMappedHSC}} </h1>
                         </mat-card-content>
                     </mat-card>
                 </div>
@@ -167,7 +167,7 @@
                             <h4> Streets Not Mapped To Revenue Village</h4>
                         </mat-card-header>
                         <mat-card-content class="d-flex justify-content-center pt-2">
-                            <h1 style="font-size: 40px;"> 205380</h1>
+                            <h1 style="font-size: 40px;"> {{streetCountOfUnMappedHSC}}</h1>
                         </mat-card-content>
                     </mat-card>
                 </div>
@@ -181,16 +181,16 @@
                                 Village Details
                             </mat-panel-title>
                         </mat-expansion-panel-header>
-                        <table mat-table [dataSource]="dataSources">
+                        <table mat-table [dataSource]="streets">
 
                             <ng-container matColumnDef="name">
                                 <th mat-header-cell *matHeaderCellDef> Role </th>
-                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element.facility_type_name}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="weight">
                                 <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element.count}} </td>
                             </ng-container>
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -207,16 +207,16 @@
                             </mat-panel-title>
                         </mat-expansion-panel-header>
                         <p></p>
-                        <table mat-table [dataSource]="dataSources">
+                        <table mat-table [dataSource]="streets">
 
                             <ng-container matColumnDef="name">
                                 <th mat-header-cell *matHeaderCellDef> Role </th>
-                                <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element.facility_type_name}} </td>
                             </ng-container>
 
                             <ng-container matColumnDef="weight">
                                 <th mat-header-cell *matHeaderCellDef> Total </th>
-                                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                                <td mat-cell *matCellDef="let element"> {{element.count}} </td>
                             </ng-container>
 
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
@@ -235,7 +235,7 @@
                         </mat-card-header>
                         <mat-card-content class="d-flex justify-content-center pt-2">
                             <h1 style="font-size: 40px;"> 
-                                40306 </h1>
+                                {{shopsCountOfMappedHSC}} </h1>
                         </mat-card-content>
                     </mat-card>
                 </div>
@@ -245,7 +245,7 @@
                             <h4> Shops Not Mapped to Street</h4>
                         </mat-card-header>
                         <mat-card-content class="d-flex justify-content-center pt-2">
-                            <h1 style="font-size: 40px;"> 0 </h1>
+                            <h1 style="font-size: 40px;"> {{shopsCountOfUnMappedHSC}} </h1>
                         </mat-card-content>
                     </mat-card>
                 </div>

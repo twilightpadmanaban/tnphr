@@ -1,0 +1,51 @@
+<mat-expansion-panel [expanded]="panelOpenState" (opened)="panelOpenState = true" (closed)="panelOpenState = false">
+    <p>Search Panel</p>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            <span class="material-icons mx-1">event</span>FTP Management
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <p></p>
+    <!-- <mat-action-row> -->
+        <form [formGroup]="userForm">
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>District</mat-label>
+                        <input matInput formControlName="district" placeholder="District" class="w-100">
+    
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Block</mat-label>
+                        <input matInput formControlName="block" placeholder="Block" class="w-100">
+                    </mat-form-field>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>PHC</mat-label>
+                        <input matInput formControlName="phc" placeholder="PHC" class="w-100">
+    
+                    </mat-form-field>
+                </div>
+                <div class="col-sm-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>HSC</mat-label>
+                        <input matInput formControlName="hsc" placeholder="HSC" class="w-100">
+                    </mat-form-field>
+                </div>
+            </div>
+        </form>
+    <div class="row">
+        <div class="col-sm-6 text-right">
+            <a (click)="clearSearch()" class="btn">Clear</a>
+        </div>
+        <div class="col-sm-6">
+            <a (click)="search()" href="javascript://" class="btn">Search</a>
+        </div>
+    </div>
+    <!-- </mat-action-row> --> 
+</mat-expansion-panel>
