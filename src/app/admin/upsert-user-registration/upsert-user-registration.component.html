@@ -5,54 +5,76 @@
         <a (click)="navigateBack()" class="btn btn_sty1"><span class="material-icons">west</span>Back</a>
     </div>
     <mat-stepper [linear]="isLinear" #stepper>
-        <mat-step  label="Personal Details">
+        <mat-step label="Personal Details">
             <form [formGroup]="personalDetailForm" class="row">
                 <div class="col-2">
                     <mat-form-field appearance="outline" class="border-red" style="width:100%">
                         <mat-label>User Title</mat-label>
-                        <input matInput formControlName="title" placeholder="User Title">
+                        <input matInput formControlName="title" placeholder="User Title" [matAutocomplete]="title">
+                        <mat-autocomplete #title="matAutocomplete">
+                            <mat-option *ngFor="let option of titles" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="f.title.errors">User Title is required</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field appearance="outline" class="border-red" style="width:100%">
                         <mat-label>User First Name</mat-label>
-                        <input matInput formControlName="firstName" placeholder="User First Name">
+                        <input matInput formControlName="firstName" placeholder="User First Name" required>
+                        <mat-error *ngIf="f.firstName.errors">User first name is required</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field appearance="outline" class="border-red" style="width:100%">
                         <mat-label>User Last Name</mat-label>
-                        <input matInput formControlName="lastName" placeholder="User Last Name">
+                        <input matInput formControlName="lastName" placeholder="User Last Name" required>
+                        <mat-error *ngIf="f.lastName.errors">User last name is required</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-2">
-                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%" required>
                         <mat-label>Gender</mat-label>
-                        <input matInput formControlName="gender" placeholder="Gender">
+                        <input matInput formControlName="gender" placeholder="Gender" [matAutocomplete]="gen">
+                        <mat-autocomplete #gen="matAutocomplete">
+                            <mat-option *ngFor="let option of genders" [value]="option">
+                                {{option}}
+                            </mat-option>
+                        </mat-autocomplete>
+                        <mat-error *ngIf="f.gender.errors">Please select a gender</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field appearance="outline" class="border-red" style="width:100%">
                         <mat-label>Date of Birth</mat-label>
-                        <input matInput formControlName="dob" placeholder="Date of Birth">
+                        <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Date of Birth"
+                            required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="f.dob.errors">Please select a DOB</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field appearance="outline" class="border-red" style="width:100%">
                         <mat-label>Mobile Number</mat-label>
-                        <input matInput formControlName="number" placeholder="Mobile Number">
+                        <input matInput formControlName="number" placeholder="Mobile Number" required>
+                        <mat-error *ngIf="f.number.errors">Mobile number is required</mat-error>
                     </mat-form-field>
                 </div>
                 <div class="col-4">
                     <mat-form-field appearance="outline" class="border-red" style="width:100%">
                         <mat-label>Email</mat-label>
-                        <input matInput formControlName="email" placeholder="Email">
+                        <input matInput formControlName="email" placeholder="Email" required>
+                        <mat-error *ngIf="f.email.errors">Email is required</mat-error>
                     </mat-form-field>
                 </div>
-                <div class="col-4">
+                <div class="col">
                     <mat-form-field appearance="outline" class="border-red" style="width:100%">
                         <mat-label>Postal Address</mat-label>
-                        <input matInput formControlName="address" placeholder="Postal Address">
+                        <input matInput formControlName="address" placeholder="Postal Address" required>
+                        <mat-error *ngIf="f.address.errors">Address is required</mat-error>
                     </mat-form-field>
                 </div>
             </form>
@@ -60,8 +82,105 @@
                 <button mat-raised-button matStepperNext color='primary'>Next</button>
             </div>
         </mat-step>
-        <mat-step  label="Employee Details">
-
+        <mat-step label="Employee Details">
+            <form [formGroup]="employeeDetailForm" class="row">
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Employee Id</mat-label>
+                        <input matInput formControlName="empID" placeholder="Employee Id" required>
+                        <mat-error *ngIf="g.empID.errors">Employee id is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Employee Type</mat-label>
+                        <input matInput formControlName="empType" placeholder="Employee Type" required>
+                        <mat-error *ngIf="g.empType.errors">Employee type is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Nature of work</mat-label>
+                        <input matInput formControlName="natureOfWork" placeholder="Nature of work" required>
+                        <mat-error *ngIf="g.natureOfWork.errors">Nature of work is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Date of joining</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="doj" placeholder="Date of joining"
+                            required>
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                        <mat-error *ngIf="g.doj.errors">Date of joining is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Is Active</mat-label>
+                        <input matInput formControlName="isActive" placeholder="Is Active" required>
+                        <mat-error *ngIf="g.isActive.errors">Is Active is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Role</mat-label>
+                        <input matInput formControlName="role" placeholder="Role" required>
+                        <mat-error *ngIf="g.role.errors">Role</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Designation</mat-label>
+                        <input matInput formControlName="designation" placeholder="Designation" required>
+                        <mat-error *ngIf="g.designation.errors">Designation is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>PHR Role</mat-label>
+                        <input matInput formControlName="phrRole" placeholder="PHR Role" required>
+                        <mat-error *ngIf="g.phrRole.errors">PHR Role is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-6">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Role in facility</mat-label>
+                        <input matInput formControlName="roleInFacility" placeholder="Role in facility" required>
+                        <mat-error *ngIf="g.roleInFacility.errors">Role in facility is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-12">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Primary Facility</mat-label>
+                        <input matInput formControlName="primaryFacillity" placeholder="Primary Facility" required>
+                        <mat-error *ngIf="g.primaryFacillity.errors">Primary Facility is required</mat-error>
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Department</mat-label>
+                        <input matInput formControlName="department" placeholder="Department">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Clinic</mat-label>
+                        <input matInput formControlName="clinic" placeholder="Clinic">
+                    </mat-form-field>
+                </div>
+                <div class="col-4">
+                    <mat-form-field appearance="outline" class="border-red" style="width:100%">
+                        <mat-label>Clinic Type</mat-label>
+                        <input matInput formControlName="clinicType" placeholder="Clinic Type">
+                    </mat-form-field>
+                </div>
+            </form>
+            <div class="d-flex justify-content-center">
+                <button mat-raised-button matStepperPrevious color='primary' class="mx-5 float-end">Previous</button>
+                <button mat-raised-button matStepperNext color='primary'>Finish</button>
+            </div>
         </mat-step>
     </mat-stepper>
 </div>
